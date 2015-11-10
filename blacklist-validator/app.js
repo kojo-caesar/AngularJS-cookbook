@@ -14,6 +14,7 @@ angular.module('blacklistVal', [])
                 NgModelController.$parsers.push(function (value) {
                     // console.log(value);
                     if (value) {
+                        // if item from badWords matches value containsBadWord = true 
                         var containsBadWord = badWords.some(function(str) {
                            return value.indexOf(str) >= 0; 
                         });
