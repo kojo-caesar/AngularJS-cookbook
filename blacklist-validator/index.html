@@ -1,0 +1,20 @@
+
+<html ng-app="blacklistVal">
+    <head>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.28/angular.min.js"></script>
+        <script src="app.js"></script>
+        <link rel="stylesheet" ng-href="style.css" />
+    </head>
+    
+    <body ng-controller="MyCtrl">
+        <form name="form" novalidate>
+            <input type="text" name="name" ng-model="name" blacklist="blacklistValues"/>
+        </form>
+        
+        <div ng-show="form.name.$dirty">
+            <span ng-show="form.name.$error.blacklist">
+                Your input contains a word from the blacklist.
+            </span>
+        </div>
+    </body>
+</html>
