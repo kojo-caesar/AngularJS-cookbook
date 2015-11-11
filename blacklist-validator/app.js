@@ -1,16 +1,14 @@
 angular
     .module('blacklistVal', [])
     .controller('MyCtrl', ['$scope', '$http', function($scope, $http) {
-       $scope.blacklistValues = ['Ola'];
-       //console.log(typeof $scope.blacklistValues, $scope.blacklistValues);
+       $scope.blacklistValues = [];
        
        $http.get('blacklist.json').success(function(data) {
-           var arr = $scope.blacklistValues;
-           for(var x = 0; x < data['blacklistV'].length; x++){
-               arr.push(data['blacklistV'][x]);
+           var i;
+           for(i = 0; i < data['blacklistV'].length; i++){
+               $scope.blacklistValues.push(data['blacklistV'][i]);
            }
-           $scope.blacklistValues = arr;
-           //console.log(typeof $scope.blacklistValues, $scope.blacklistValues);
+           console.log($scope.blacklistValues);
        });
     }])
     .directive('blacklist', function ($parse) {
@@ -18,11 +16,10 @@ angular
             require:'ngModel',
             link: function (scope, element, attrs, NgModelController) {
                 // badWords takes the blacklistValues provided in $scope by MyCtrl controller
-                // $parse returns a function
-                // var badWords = $parse(attrs.blacklist)(scope) || [];
                 var badWords;
                 
                 scope.$watch(function () {
+                    //console.log(scope[attrs.blacklist]);
                     return scope[attrs.blacklist];
                 }, function (newValue, oldValue) {
                     badWords = newValue || [];
@@ -38,9 +35,9 @@ angular
                     if (value) {
                         // if item from badWords matches value containsBadWord = true 
                         var containsBadWord = badWords.some(function(str) {
-                           return value.indexOf(str) >= 0; 
+                           return value.toLowerCase().indexOf(str.toLowerCase()) >= 0; 
                         });
-                        console.log("containsBadWord = " + containsBadWord);
+                        //console.log("containsBadWord = " + containsBadWord);
                         NgModelController.$setValidity('blacklist', !containsBadWord);
                     }
                 });
