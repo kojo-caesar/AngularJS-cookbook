@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+    <head ng-controller="HeadCtrl">
+        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js"></script>
+        <script type="text/javascript" src="app.js"></script>
+        <link rel="stylesheet" ng-href="theme-{{getTheme()}}.css" type="text/css" />
+    </head>
+    <body ng-controller="MainCtrl">
+        <h1> Ola </h1>
+        <p>
+            <span>Select theme:</span>
+            
+                <span ng-repeat="t in themes">
+                    <a href ng-click="setTheme(t)">{{t}}</a>
+                </span>
+            
+        </p>
+    </body>
+</html>
