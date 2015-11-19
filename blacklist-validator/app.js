@@ -2,6 +2,14 @@ angular
     .module('blacklistVal', [])
     .controller('MyCtrl', ['$scope', '$http', function($scope, $http) {
        $scope.blacklistValues = [];
+       $scope.name = "";
+
+       console.log($scope.name);
+       $scope.submit = function(name) {
+           $scope.name = name;
+           console.log($scope.name);
+           //do Stuff
+       };
        
        $http.get('blacklist.json').success(function(data) {
            var i;
