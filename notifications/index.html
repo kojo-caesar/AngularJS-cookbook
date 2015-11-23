@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html ng-app="notifications">
+    <head>
+        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js"></script>
+        <script type="text/javascript" src="app.js"></script>
+        <link rel="stylesheet" href="style.css" type="text/css" />
+    </head>
+    <body>
+        <div ng-controller="MainCtrl">
+            <button ng-click="addNotification()">Add notification</button>
+        </div>
+        
+        <ul class="notifications" ng-controller="NotificationsCtrl">
+            {{notificationList}}
+            <li ng-repeat="notification in notifications.getList()" class="animate-repeat">
+                <a href ng-bind="notification.text" ng-click="notifications.remove(notification.id)"></a>
+            </li>
+        </ul>
+    </body>
+</html>
