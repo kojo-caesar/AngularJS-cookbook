@@ -1,16 +1,16 @@
 angular.module("notifications",[])
     .factory("NotificationService", function($timeout) {
-       var counter = 0,
+       var counterG = 0,
            list = [];
         function getCounter() { 
-            return globalCounter += 1;
+            return counterG++;
         }
         function getList() {
             return list;
         }
-        function add(text, timout) {
+        function add(text, timeout) {
             var counter = getCounter();
-            list.unshift({ id: counter, text: text});
+            list.push({ id: counter, text: text});
             $timeout(function() { remove(counter); },
                     (timeout || 3000)
                     );
@@ -33,6 +33,6 @@ angular.module("notifications",[])
     })
     .controller("MainCtrl", function($scope, NotificationService) {
         $scope.addNotification = function() {
-            NotificationService.add(new Date(), 1000);
+            NotificationService.add(new Date(), 5000);
         };
     });
