@@ -17,7 +17,7 @@ angular.module("notifications",[])
         }
         function remove(id){
             for(var i=0; i<list.length; i++) {
-                if(list[i].id === parseInt(id, 10)) {
+                if(list[i].id === parseInt(id)) {
                     return list.splice(i, 1);
                 }
             }
