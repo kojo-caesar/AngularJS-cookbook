@@ -8,7 +8,7 @@
     <body ng-controller="MainCtrl">
         <input ng-model="search" placeholder="Search..."/>
         <ul>
-            <li ng-repeat="item in items | filter:search" ng-bind-html="item | highlight:search">{{item}}</li>
+            <li ng-repeat="item in items | filter:search" ng-bind-html="item | highlight:search">{{ item }}</li>
         </ul>
     </body>
 </html>

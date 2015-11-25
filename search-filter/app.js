@@ -9,5 +9,5 @@ angular.module("search-filter", ['ngSanitize'])
         };
     })
     .controller("MainCtrl", function($scope) {
-        $scope.items = ['Ceas', "Caine", "Laptop", "Bec"];
+        $scope.items = ['Ceas', "Caine", "Laptop", "Bec", "Lapte", "Apa", "Zebra"];
     });
