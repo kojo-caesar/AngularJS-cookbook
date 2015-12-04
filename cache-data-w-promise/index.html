@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+    <head>
+        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js"></script>
+        <script type="text/javascript" src="app.js"></script>
+    </head>
+    <body ng-controller="myCtrl">
+        <ul>
+            <li ng-repeat="user in users" ng-bind="user"></li>
+            <button ng-click="loadUsers()">Load</button>
+        </ul>
+    </body>
+</html>
